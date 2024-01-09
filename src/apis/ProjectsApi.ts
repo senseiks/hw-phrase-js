@@ -130,7 +130,7 @@ export class ProjectsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            queryParameters["access_token"] = this.configuration.apiKey("Authorization"); // Token authentication
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
         const response = await this.request({
